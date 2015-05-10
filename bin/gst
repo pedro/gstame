@@ -20,16 +20,10 @@ program
   });
 
 program
-  .command('download')
-  .option('-p, --project [projectName]')
+  .command('download <projectName>')
   .description('Download project')
-  .action(function(opts) {
-    if (!opts.project) {
-      console.error('missing project');
-      process.exit(1);
-    }
-
-    google.download(opts.project, function(err, project) {
+  .action(function(projectName) {
+    google.download(projectName, function(err, project) {
       project.files.forEach(function(file) {
         var fname = google.filename(file);
         fs.writeFile(fname, file.source, function(err) {
