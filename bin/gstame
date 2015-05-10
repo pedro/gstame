@@ -42,10 +42,10 @@ program
   })
 
 program
-  .command('download <projectName>')
-  .description('Download project')
+  .command('pull <projectName>')
+  .description('Save project files in current directory')
   .action(function(projectName) {
-    google.download(projectName, function(err, project) {
+    google.pull(projectName, function(err, project) {
       project.files.forEach(function(file) {
         var fname = google.scriptFileName(file);
         fs.writeFile(fname, file.source, function(err) {
