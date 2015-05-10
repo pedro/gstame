@@ -27,7 +27,7 @@ Project2
 To save a project to the current folder like:
 
 ```
-$ gstame pull Project1`
+$ gstame pull Project1
 Wrote Dialog.html
 Wrote DialogJavaScript.html
 Wrote Sidebar.html
