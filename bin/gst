@@ -1,16 +1,51 @@
 #!/usr/bin/env node
 
+var fs = require('fs');
 var program = require('commander');
+var readline = require('readline');
 var spec = require('./../package.json');
+var google = require('./../lib/google');
 
-program.version(spec.version);
+program
+  .version(spec.version);
 
 program
   .command('list')
   .description('List projects in your Drive account')
   .action(function() {
-    console.log("LISTING");
-  })
+    google.list(function(projects) {
+      projects.forEach(function(p) {
+        console.log(p.title);
+      });
+    });
+  });
+
+program
+  .command('auth')
+  .description('Authenticate with Google')
+  .action(function() {
+    console.log('Temporary/hacky auth using the Oauth Playground');
+    console.log('Open: https://developers.google.com/oauthplayground/');
+    console.log('Add the custom scope: https://www.googleapis.com/auth/drive.scripts https://www.googleapis.com/auth/drive');
+    console.log('Click Exchange authorization code for tokens');
+    console.log('Paste the access token below:');
+
+    var rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+      terminal: false
+    });
+
+    rl.on('line', function(token) {
+      console.log('token is: ' + token);
+      fs.writeFile(process.env.HOME + '/.gs-tamer', token, function(err) {
+        if (err) {
+          console.error(err)
+        }
+        rl.close();
+      });
+    });
+  });
 
 program.on('*', function(command) {
   console.error('Command `%s` unrecognized', command[0]);
