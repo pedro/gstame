@@ -47,7 +47,7 @@ program
   .action(function(projectName) {
     google.download(projectName, function(err, project) {
       project.files.forEach(function(file) {
-        var fname = file.name + google.scriptExtensionForType(file.type);
+        var fname = google.scriptFileName(file);
         fs.writeFile(fname, file.source, function(err) {
           if (err) {
             console.error(err);
