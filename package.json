@@ -1,0 +1,22 @@
+{
+  "name": "gs-tamer",
+  "version": "0.0.1",
+  "dependencies": {
+    "commander": "^2.8.x"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pedro/gs-tamer"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "license": "MIT"
+}
