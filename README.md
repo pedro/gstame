@@ -92,3 +92,7 @@ describe('Installation', function() {
 Talking about node packages, it should be possible to allow developers to define Node dependencies for their `gs` code using npm, and have these bundled/compiled to something that Google can execute on `push`.
 
 Please let me know if you have any feedback on these!
+
+## Meta
+
+Created by Pedro Belo, published under the MIT license.
