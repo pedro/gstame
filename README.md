@@ -4,6 +4,12 @@ Node library and command-line tool to help developers maintain [Google Apps Scri
 
 ## Command-line
 
+Install it with npm:
+
+```
+$ npm install -g gstame
+```
+
 Start authenticating to grab a token to your Google Drive:
 
 ```
