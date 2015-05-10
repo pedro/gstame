@@ -56,11 +56,9 @@ $ gstame open Project1
 
 ## Future
 
-The command-line is just part of the problem I'd like to tackle here.
+More than offering a command line tool, I'd like to enable *real* local development of Google Apps Script using Node.js stubs.
 
-Better than allowing developers to sync projects, I'd like to allow for real local development of Google Script using Node stubs.
-
-For instance, take this typical .gs code:
+For instance, take this typical `Code.gs` file:
 
 ```js
 function onInstall(e) {
@@ -71,7 +69,7 @@ function onInstall(e) {
 }
 ```
 
-I'd like to wrap it with Node stubs immitating the Google elements so we can do things like:
+With the right stubs immitating Google elements and ui, you could test your `gs` with your favorite Node testing tools:
 
 ```js
 var assert = require('chai').assert;
@@ -85,4 +83,6 @@ describe('Installation', function() {
 });
 ```
 
-I'd also like to allow for Node dependencies in Node, so you can essentially define a `package.json` for your Apps Script, and have it all "compile" to code that Google can execute.
+Talking about node packages, it should be possible to allow developers to define Node dependencies for their `gs` code using npm, and have these bundled/compiled to something that Google can execute on `push`.
+
+Please let me know if you have any feedback on these!
