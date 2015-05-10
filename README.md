@@ -1,6 +1,6 @@
 # GSTame
 
-Node library and command-line tool to help developers maintain Google Apps Script projects.
+Node library and command-line tool to help developers maintain [Google Apps Script](https://developers.google.com/apps-script) projects.
 
 ## Command-line
 
@@ -73,7 +73,7 @@ function onInstall(e) {
 
 I'd like to wrap it with Node stubs immitating the Google elements so we can do things like:
 
-```
+```js
 var assert = require('chai').assert;
 var myProject = require('Code.gs');
 var DocumentApp = require('gstame').stub(myProject);
@@ -84,3 +84,5 @@ describe('Installation', function() {
   });
 });
 ```
+
+I'd also like to allow for Node dependencies in Node, so you can essentially define a `package.json` for your Apps Script, and have it all "compile" to code that Google can execute.
