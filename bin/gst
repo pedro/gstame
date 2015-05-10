@@ -6,8 +6,7 @@ var readline = require('readline');
 var spec = require('./../package.json');
 var google = require('./../lib/google');
 
-program
-  .version(spec.version);
+program.version(spec.version);
 
 program
   .command('list')
@@ -16,6 +15,30 @@ program
     google.list(function(projects) {
       projects.forEach(function(p) {
         console.log(p.title);
+      });
+    });
+  });
+
+program
+  .command('download')
+  .option('-p, --project [projectName]')
+  .description('Download project')
+  .action(function(opts) {
+    if (!opts.project) {
+      console.error('missing project');
+      process.exit(1);
+    }
+
+    google.download(opts.project, function(err, project) {
+      project.files.forEach(function(file) {
+        var fname = google.filename(file);
+        fs.writeFile(fname, file.source, function(err) {
+          if (err) {
+            console.error(err);
+            process.exit(1);
+          }
+          console.log('Wrote ' + fname);
+        });
       });
     });
   });
