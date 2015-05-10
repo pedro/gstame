@@ -2,13 +2,13 @@
 
 Node library and command-line tool to help developers maintain [Google Apps Script](https://developers.google.com/apps-script) projects.
 
-## Command-line
-
-Install it with npm:
+Install with npm:
 
 ```
 $ npm install -g gstame
 ```
+
+## Command-line
 
 Start authenticating to grab a token to your Google Drive:
 
