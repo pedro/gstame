@@ -4,6 +4,7 @@
   "dependencies": {
     "commander": "^2.8.x",
     "googleapis": "^2.0.x",
+    "open": "^0.0.5",
     "request": "~2.54.0"
   },
   "devDependencies": {
