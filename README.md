@@ -30,7 +30,7 @@ Project1
 Project2
 ```
 
-To save a project to the current folder like:
+To save a project to the current folder:
 
 ```
 $ gstame pull Project1
@@ -54,7 +54,7 @@ Updated Sidebar.html
 Updated SidebarJavaScript.html
 ```
 
-Open projects in Script Editor to rename, publish, etc:
+A lot of the functionality around Google script projects [are not yet available in their API](https://developers.google.com/apps-script/import-export#limitations). So you'll keep using the Script Editor to rename, publish or execute projects:
 
 ```
 $ gstame open Project1
