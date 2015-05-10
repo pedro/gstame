@@ -3,6 +3,7 @@
 var fs = require('fs');
 var program = require('commander');
 var open = require('open');
+var path = require('path');
 var readline = require('readline');
 var spec = require('./../package.json');
 var google = require('./../lib/google');
@@ -56,6 +57,33 @@ program
         });
       });
     });
+  });
+
+program
+  .command('push <projectName>')
+  .description('Push project code')
+  .action(function(projectName) {
+    var files = []
+    fs.readdirSync('.').forEach(function(file) {
+      var ext = path.extname(file);
+      var type = google.scriptTypeForExtension(ext);
+
+      if (type) {
+        files.push({
+          name: path.basename(file, ext),
+          type: type,
+          source: fs.readFileSync(file, 'utf8')
+        });
+      }
+    });
+
+    google.push(projectName, files, function(err, res) {
+      if (err) {
+        console.error(err)
+        process.exit(1);
+      }
+      console.log('Updated ' + projectName);
+    })
   });
 
 program
